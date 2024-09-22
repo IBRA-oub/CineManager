@@ -1,0 +1,19 @@
+{
+  "name": "cinemanager",
+  "version": "1.0.0",
+  "description": "Application de Gestion de Cinéma avec Authentification et Réservations (Backend)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "nodemon": "^3.1.7"
+  }
+}
