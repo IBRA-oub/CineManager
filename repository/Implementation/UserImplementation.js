@@ -65,9 +65,12 @@ class UserRepository extends UserInterface {
         } else {
             res.status(401)
             throw new Error("email or password is not valid")
-
         }
         
+    });
+
+    currentUser = asyncHandler(async (req, res) => {  
+        res.json(req.user);
     });
 }
 

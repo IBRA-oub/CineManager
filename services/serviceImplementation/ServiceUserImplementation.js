@@ -9,6 +9,9 @@ class UserService {
     async loginUser(req,res){
         return this.UserRepository.loginUser(req, res)
     }
+    async currentUser(req,res){
+        return this.UserRepository.currentUser(req, res)
+    }
 }
 
 export default UserService;

@@ -13,6 +13,9 @@ class UserInterface{
     async loginUser(req,res){
         throw new Error('Must be Implemented!!');
     }
+    async currentUser(req,res){
+        throw new Error('Must be Implemented!!');
+    }
    
 
 }

@@ -1,5 +1,5 @@
 import UserService from "../services/serviceImplementation/ServiceUserImplementation.js";
-import asyncHandler from "express-async-handler";
+// import asyncHandler from "express-async-handler";
 class UserController {
     constructor() {
         this.UserService = new UserService();
@@ -13,9 +13,10 @@ class UserController {
         this.UserService.loginUser(req,res);
        
     };
-    currentUser = asyncHandler(async (req, res) => {   
-        res.json({message:"current  user"});
-    });
+    currentUser = async (req, res) => { 
+        this.UserService.currentUser(req,res);  
+       
+    };
 }
 
 export default new UserController();
