@@ -4,15 +4,15 @@ class UserController {
     constructor() {
         this.UserService = new UserService();
     }
-    registerUser = (async(req,res)=>{
+    registerUser = async(req,res)=>{
          this.UserService.create(req,res);
-    });
+    };
    
 
-    loginUser = asyncHandler(async (req, res) => {   
+    loginUser = async (req, res) => {   
         this.UserService.loginUser(req,res);
        
-    });
+    };
     currentUser = asyncHandler(async (req, res) => {   
         res.json({message:"current  user"});
     });

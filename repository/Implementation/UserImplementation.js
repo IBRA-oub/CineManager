@@ -3,7 +3,7 @@ import UserModel from "../../models/User.mjs";
 import bcrypt from "bcrypt";
 // import crypto from 'crypto';
 import asyncHandler from "express-async-handler";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 
 class UserRepository extends UserInterface {
 
