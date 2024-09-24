@@ -10,7 +10,8 @@ class UserController {
    
 
     loginUser = asyncHandler(async (req, res) => {   
-        res.json({message:"login the user"});
+        this.UserService.loginUser(req,res);
+       
     });
     currentUser = asyncHandler(async (req, res) => {   
         res.json({message:"current  user"});

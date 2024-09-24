@@ -10,6 +10,9 @@ class UserInterface{
     async create(req,res){
         throw new Error('Must be Implemented!!');
     }
+    async loginUser(req,res){
+        throw new Error('Must be Implemented!!');
+    }
    
 
 }
