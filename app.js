@@ -1,18 +1,21 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const errorHandler = require("./middleware/errorHandler");
-const connectDB = require('./config/db')
-dotenv.config();
-connectDB();
+// const express = require('express');
+import express from "express";
+// const dotenv = require('dotenv');
+import dotenv  from "dotenv";
+import errorHandler from "./middleware/errorHandler.js";
+import connectDB from "./config/db.js";
+import usersRouter from "./routes/usersRoutes.js";
 const app = express();
+
+dotenv.config(); //get variable from .env
+connectDB();
 
 
 app.use(express.json());
 app.use(errorHandler);
-const usersRouter = require('./routes/usersRoutes');
 
 
-app.use('/', usersRouter);
+app.use('/api/user', usersRouter);
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {

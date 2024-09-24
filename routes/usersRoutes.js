@@ -1,8 +1,10 @@
-const express = require('express');
+// const express = require('express');
+import express from "express";
+import userController from "../controllers/userController.js";
 const router = express.Router();
 
-router.get('/api/users', (req, res) => {
-    res.json({message:"get all contacts"});
-})
-
-module.exports = router;
+router.post('/register',userController.registerUser)
+router.post('/login',userController.loginUser)
+router.get('/current',userController.currentUser)
+ 
+export default router;

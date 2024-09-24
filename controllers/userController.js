@@ -1,1 +1,22 @@
-const asyncHandler = require("express-async-handler");
+import UserService from "../services/serviceImplementation/ServiceUserImplementation.js";
+import asyncHandler from "express-async-handler";
+class UserController {
+    constructor() {
+        this.UserService = new UserService();
+    }
+    registerUser = (async(req,res)=>{
+         this.UserService.create(req,res);
+    });
+   
+
+    loginUser = asyncHandler(async (req, res) => {   
+        res.json({message:"login the user"});
+    });
+    currentUser = asyncHandler(async (req, res) => {   
+        res.json({message:"current  user"});
+    });
+}
+
+export default new UserController();
+
+
