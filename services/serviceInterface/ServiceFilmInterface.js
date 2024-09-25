@@ -12,6 +12,15 @@ class ServiceFilmInterface{
     async createFilm(req,res){
         throw new Error('Must be Implemented!!');
     }
+    async getFilm(req,res){
+        throw new Error('Must be Implemented!!');
+    }
+    async updateFilm(req,res){
+        throw new Error('Must be Implemented!!');
+    }
+    async deleteFilm(req,res){
+        throw new Error('Must be Implemented!!');
+    }
   
    
 
