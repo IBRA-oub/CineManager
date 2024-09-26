@@ -1,28 +1,26 @@
-class ServiceFilmInterface{
-
-    constructor(){
-        if(new.target === ServiceFilmInterface){
+class SalleInterface {
+    constructor() {
+        if (new.target === SalleInterface) {
             throw new Error('It is an abstract class can not be instancited');
         }
 
     }
-    async getAllFilm(req,res){
+    async getAllSalle(req, res) {
         throw new Error('Must be Implemented!!');
     }
-    async createFilm(req,res){
+
+    async createSalle(req, res) {
         throw new Error('Must be Implemented!!');
     }
-    async getFilm(req,res){
+    async getSalle(req, res) {
         throw new Error('Must be Implemented!!');
     }
-    async updateFilm(req,res){
+    async updateSalle(req, res) {
         throw new Error('Must be Implemented!!');
     }
-    async deleteFilm(req,res){
+    async deleteSalle(req, res) {
         throw new Error('Must be Implemented!!');
     }
-  
-   
 
 }
-export default ServiceFilmInterface;
+export default SalleInterface;

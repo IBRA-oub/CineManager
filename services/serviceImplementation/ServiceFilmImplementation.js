@@ -1,5 +1,5 @@
 import FilmRepository from "../../repository/Implementation/FilmImplementation.js";
-class FilmService {
+class FilmService  {
     constructor() {
         this.FilmRepository = new FilmRepository()
     }
