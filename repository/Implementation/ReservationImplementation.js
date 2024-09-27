@@ -116,11 +116,7 @@ class ReservationRepository extends ReservationInterface {
     
         res.status(200).json({ message: "Réservation supprimée et places rendues disponibles avec succès" });
     });
-
-    
-    
+ 
 }
-
-
 
 export default ReservationRepository;

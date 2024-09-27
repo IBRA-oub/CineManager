@@ -8,16 +8,16 @@ import jwt from "jsonwebtoken";
 class UserRepository extends UserInterface {
 
     create = asyncHandler(async (req, res) => {
-        const { nom, email, password, role } = req.body;
+        const { nom, email, password } = req.body;
 
-        if (!nom || !email || !password || !role) {
+        if (!nom || !email || !password) {
             res.status(400);
             throw new Error("All fields are mandatory!");
         }
 
         const userAvailable = await UserModel.User.findOne({ email });
         if (userAvailable) {
-            res.status(400);
+            res.status(400).json({ "message": "User already exists" })
             throw new Error("User already exists");
         }
 
@@ -27,8 +27,7 @@ class UserRepository extends UserInterface {
         const user = await UserModel.User.create({
             nom,
             email,
-            password: hashedPassword,
-            role
+            password: hashedPassword
         });
 
         console.log(`User created: ${user}`);
@@ -66,10 +65,10 @@ class UserRepository extends UserInterface {
             res.status(401)
             throw new Error("email or password is not valid")
         }
-        
+
     });
 
-    currentUser = asyncHandler(async (req, res) => {  
+    currentUser = asyncHandler(async (req, res) => {
         res.json(req.user);
     });
 }
