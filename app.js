@@ -8,6 +8,7 @@ import usersRouter from "./routes/usersRoutes.js";
 import filmRouter from "./routes/filmsRoutes.js";
 import salleRouter from "./routes/sallesRoutes.js";
 import seanceRouter from "./routes/SeancesRoutes.js";
+import reservationRouter from "./routes/reservationRoutes.js";
 const app = express();
 
 dotenv.config(); //get variable from .env
@@ -22,6 +23,7 @@ app.use('/api/user', usersRouter);
 app.use('/api/film', filmRouter);
 app.use('/api/salle', salleRouter);
 app.use('/api/seance', seanceRouter);
+app.use('/api/reservation', reservationRouter);
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
