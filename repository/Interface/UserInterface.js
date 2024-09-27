@@ -16,6 +16,12 @@ class UserInterface{
     async currentUser(req,res){
         throw new Error('Must be Implemented!!');
     }
+    async requestPasswordReset(req,res){
+        throw new Error('Must be Implemented!!');
+    }
+    async resetPassword(req,res){
+        throw new Error('Must be Implemented!!');
+    }
    
 
 }

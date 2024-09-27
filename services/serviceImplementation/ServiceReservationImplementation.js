@@ -10,10 +10,10 @@ class ReservationService  {
     async createReservation(req, res) {
         return this.ReservationRepository.createReservation(req, res)
     }
-   
-    async updateReservation(req, res) {
-        return this.ReservationRepository.updateReservation(req, res)
+    async getReservation(req, res) {
+        return this.ReservationRepository.getReservation(req, res)
     }
+    
     async deleteReservation(req, res) {
         return this.ReservationRepository.deleteReservation(req, res)
     }

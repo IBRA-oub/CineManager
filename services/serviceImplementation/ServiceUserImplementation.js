@@ -12,6 +12,12 @@ class UserService {
     async currentUser(req,res){
         return this.UserRepository.currentUser(req, res)
     }
+    async requestPasswordReset(req,res){
+        return this.UserRepository.requestPasswordReset(req, res)
+    }
+    async resetPassword(req,res){
+        return this.UserRepository.resetPassword(req, res)
+    }
 }
 
 export default UserService;

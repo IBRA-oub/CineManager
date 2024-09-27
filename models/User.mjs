@@ -26,7 +26,9 @@ class UserModel {
       createdAt: {
         type: Date,
         default: Date.now
-      }
+      },
+      resetPasswordToken: String,
+      resetPasswordExpires: Date,
     });
 
     this.User = mongoose.model("User", usersSchema);
