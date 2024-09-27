@@ -33,6 +33,10 @@ Créez un fichier .env à la racine du projet et ajoutez vos variables d'environ
    npm start
 
 ## 📝 UML
+1. diagrame de classe 
+![diagramme de classe cinéManger](https://github.com/user-attachments/assets/7a9bd8d3-e74e-4c1c-b7dd-1549420d8b9c)
+2. use cases
+![use case cinéManger](https://github.com/user-attachments/assets/5879e217-af41-4ceb-81a4-a9f858d44d9c)
 
 ## 🔌 Endpoints API documentation 
 
