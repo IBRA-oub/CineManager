@@ -8,7 +8,7 @@ import jwt from "jsonwebtoken";
 class AdminRepository extends AdminInterface {
 
     createAdmin = asyncHandler(async (req, res) => {
-        const { nom, email, password} = req.body;
+        const { nom, email, password } = req.body;
 
         if (!nom || !email || !password) {
             res.status(400);
@@ -28,7 +28,7 @@ class AdminRepository extends AdminInterface {
             nom,
             email,
             password: hashedPassword,
-            role:"admin"
+            role: "admin"
         });
 
         console.log(`User created: ${user}`);
@@ -41,6 +41,55 @@ class AdminRepository extends AdminInterface {
             throw new Error("User data is not valid");
         }
     });
+
+    getAllAdmin = asyncHandler(async (req, res) => {
+        const admins = await UserModel.User.find({ role: "admin" });
+        res.status(200).json(admins);
+    });
+
+    getAdmin = asyncHandler(async (req, res) => {
+
+        const admin = await UserModel.User.findById(req.params.id);
+
+
+        if (!admin || admin.role !== "admin") {
+            res.status(404);
+            throw new Error("Admin not found");
+        }
+
+        res.status(200).json(admin);
+    });
+
+    updateAdmin = asyncHandler(async (req, res) => {
+        const admin = await UserModel.User.findById(req.params.id);
+        if (!admin || admin.role !== "admin") {
+            res.status(404);
+            throw new Error("Admin not found");
+        }
+
+        const updatedAdmin = await UserModel.User.findByIdAndUpdate(
+
+            req.params.id,
+            req.body,
+            { new: true }
+        );
+        res.status(200).json(updatedAdmin);
+
+    });
+
+    deleteAdmin = asyncHandler(async (req, res) => {
+        const admin = await UserModel.User.findById(req.params.id);
+
+        if (!admin || admin.role !== "admin") {
+            res.status(404);
+            throw new Error("Admin not found");
+        }
+
+
+        await UserModel.User.deleteOne(admin);
+        res.status(200).json({ message: "Admin delete seccessfuly " })
+    })
+
 
 
 }
