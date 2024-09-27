@@ -14,10 +14,7 @@ class ReservationController {
         this.ReservationService.getReservation(req, res);
 
     };
-    updateReservation = async (req, res) => {
-        this.ReservationService.updateReservation(req, res);
-
-    };
+  
     deleteReservation = async (req, res) => {
         this.ReservationService.deleteReservation(req, res);
 

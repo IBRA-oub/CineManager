@@ -56,6 +56,7 @@ class UserRepository extends UserInterface {
                 user: {
                     nom: user.nom,
                     email: user.email,
+                    role:user.role,
                     id: user.id
                 },
             }, process.env.ACCESSS_TOKEN_SECRET, { expiresIn: '1800s' });

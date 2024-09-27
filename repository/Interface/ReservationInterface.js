@@ -14,9 +14,7 @@ class ReservationInterface{
     async createReservation(req,res){
         throw new Error('Must be Implemented!!');
     }
-    async getReservation(req,res){
-        throw new Error('Must be Implemented!!');
-    }
+   
     async updateReservation(req,res){
         throw new Error('Must be Implemented!!');
     }

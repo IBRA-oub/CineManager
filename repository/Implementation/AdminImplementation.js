@@ -66,7 +66,9 @@ class AdminRepository extends AdminInterface {
             res.status(404);
             throw new Error("Admin not found");
         }
-
+        if (req.body.password) {
+            req.body.password = await bcrypt.hash(req.body.password, 10);
+        }
         const updatedAdmin = await UserModel.User.findByIdAndUpdate(
 
             req.params.id,
