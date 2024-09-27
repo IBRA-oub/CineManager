@@ -57,6 +57,14 @@ class FilmRepository extends FilmInterface {
             throw new Error("Film not found")
         }
 
+        if (req.file) {
+            const imagePath = req.file.path;
+            req.body.image = {
+                data: imagePath,
+                contentType: req.file.mimetype
+            };
+        }
+
         const updatedFilm = await FilmModel.Film.findByIdAndUpdate(
 
             req.params.id,
