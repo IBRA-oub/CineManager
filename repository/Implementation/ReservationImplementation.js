@@ -14,7 +14,7 @@ class ReservationRepository extends ReservationInterface {
         try {
             // Trouver la séance par ID
             const seance = await SeanceModel.Seance.findById(seanceId);
-            console.log(seance)
+            // console.log(seance)
             if (!seance) {
                 return res.status(404).json({ message: 'Séance introuvable.' });
             }
@@ -67,6 +67,58 @@ class ReservationRepository extends ReservationInterface {
             return res.status(500).json({ message: 'Erreur interne du serveur.' });
         }
     });
+
+    getAllReservation = asyncHandler(async(req,res)=>{
+        const reservation = await ReservationModel.Reservation.find();
+        res.status(200).json(reservation);
+    });
+
+    getReservation = asyncHandler(async(req,res)=>{
+        const reservation = await ReservationModel.Reservation.findById(req.params.id);
+        if (!reservation) {
+            res.status(404);
+            throw new Error("Salle not found")
+        }
+        res.status(200).json(reservation)
+    });
+
+    deleteReservation = asyncHandler(async (req, res) => {
+        // Trouver la réservation par ID
+        const reservation = await ReservationModel.Reservation.findById(req.params.id);
+    
+        if (!reservation) {
+            res.status(404);
+            throw new Error("Réservation introuvable");
+        }
+    
+        // Trouver la séance associée à cette réservation
+        const seance = await SeanceModel.Seance.findById(reservation.seance);
+        if (!seance) {
+            res.status(404);
+            throw new Error("Séance introuvable");
+        }
+    
+        // Rendre les places réservées disponibles à nouveau
+        reservation.places_reservees.forEach((placeReservee) => {
+            seance.places = seance.places.map((place) => {
+                if (place.numero === placeReservee.numero) {
+                    return { ...place, disponible: true };
+                }
+                return place;
+            });
+        });
+    
+        // Sauvegarder la séance avec les places mises à jour
+        await seance.save();
+    
+        // Supprimer la réservation
+        await ReservationModel.Reservation.deleteOne({ _id: reservation._id });
+    
+        res.status(200).json({ message: "Réservation supprimée et places rendues disponibles avec succès" });
+    });
+
+    
+    
 }
 
 
