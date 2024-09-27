@@ -24,6 +24,10 @@ class FilmModel {
                 type: Date,
                 required: [true, "Please add date of production"],
             },
+            image: {
+                data: Buffer,
+                contentType: String
+            },
             createdAt: {
                 type: Date,
                 default: Date.now

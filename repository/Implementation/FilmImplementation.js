@@ -1,6 +1,9 @@
 import FilmInterface from '../Interface/FilmInterface.js';
 import FilmModel from "../../models/Film.mjs";
 import asyncHandler from "express-async-handler";
+import path from 'path';
+import upload from '../../middleware/configMulter.js';
+
 
 class FilmRepository extends FilmInterface {
 
@@ -8,20 +11,31 @@ class FilmRepository extends FilmInterface {
         const films = await FilmModel.Film.find();
         res.status(200).json(films);
     });
+    
     createFilm = asyncHandler(async (req, res) => {
         const { titre, description, genre, duree, annee } = req.body;
+
+         
+         if (!req.file) {
+            return res.status(400).json({ message: 'Image is required' });
+        }
 
         if (!titre || !description || !genre || !duree || !annee) {
             res.status(400);
             throw new Error("All fields are required")
         }
+        const imagePath = req.file.path;
 
         const film = await FilmModel.Film.create({
             titre,
             description,
             genre,
             duree,
-            annee
+            annee,
+            image: {
+                data: imagePath,
+                contentType: req.file.mimetype
+            }
         });
         res.status(201).json(film);
 
